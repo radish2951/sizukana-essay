@@ -84,6 +84,6 @@ LaTeX 環境のインストールや設定方法については、ウェブ上�
 詳細は `LICENSE` ファイルをご覧ください。
 
 ## 作者
-池田大輝（Daiki Ikeda）[@radish2951](https://twitter.com/radish2951)
+池田大輝（Daiki Ikeda）[@radish2951](https://x.com/radish2951)
 
 ご不明な点や感想など、お気軽にご連絡ください！
