@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/radish2951/sizukana-essay)
+
 # sizukana-essay
 
 ![preview.jpg](preview.jpg)
