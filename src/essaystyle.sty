@@ -1,0 +1,60 @@
+% ---------------------------------------------------------------
+% このファイルは、本テンプレート用のカスタムLaTeXスタイルファイルです。
+% 日本語組版や目次・章タイトル・ページスタイルの体裁を整えるための
+% 各種パッケージの読み込みや設定をまとめています。
+% ドキュメント全体の統一感あるレイアウトを実現するためにご利用ください。
+% ---------------------------------------------------------------
+
+\ProvidesPackage{essaystyle}
+
+% ルビを振るためのパッケージを読み込みます
+\usepackage{luatexja-ruby}
+% フォントを指定するためのパッケージです
+\usepackage{fontspec}
+% URLを扱うためのパッケージです
+\usepackage{url}
+% luatex-ja拡張パッケージです
+\usepackage{lltjext}
+% 計算用パッケージです
+\usepackage{calc}
+% 目次のスタイルを調整するパッケージです
+\usepackage{titletoc}
+
+% 目次の見出しを設定します（フォントサイズや太字など）
+\jlreqsetup{tableofcontents_heading={{\fontsize{10pt}{10pt}\selectfont\textbf{Contents}}\vspace{2em}}}
+
+% 縦中横を簡単に使うためのコマンドを定義します
+\newcommand{\tcy}[1]{\tatechuyoko{#1}}
+
+% 目次（chapter）のスタイルを設定します
+\titlecontents{chapter}
+  [10mm] % 上の余白を指定します
+  {\fontsize{8.5pt}{14.3pt}\bfseries} % フォントサイズと行間、太字を指定します
+  {\contentslabel{2em}} % 章番号の表示スタイルです
+  {} % 番号なしの場合のスタイルです
+  {\titlerule*{・}\tcy{\thecontentspage}} % ページ番号の前に点線を入れ、ページ番号を縦中横で表示します
+
+% チャプター（章）の見出しスタイルを調整します
+\ModifyHeading{chapter}{%
+  indent=1em, % 章タイトルのインデント
+  second_heading_text_indent=0em, % 2行目以降のインデント
+  font=\normalfont\Large\bfseries, % フォントサイズと太字
+  label_format=\tcy{\arabic{chapter}}, % 章番号を縦中横で表示
+  after_label_space=1em, % 章番号とタイトルの間隔
+  lines=1, % 章タイトルの行数
+  before_lines=4, % 章タイトル前の空き行数
+  after_lines=2, % 章タイトル後の空き行数
+  pagebreak=nariyuki % 改ページの設定
+}
+
+% ページスタイル（ヘッダー・フッター）の設定です
+\ModifyPageStyle{plain}{
+  odd_running_head={\booktitle}, % 偶数ページのヘッダーに書籍タイトルを表示
+  even_running_head={_chapter}, % 章タイトルを偶数ページヘッダーに表示
+  mark_format={_chapter={#1}}, % 章タイトルのマーク形式
+  running_head_position=top-left, % ヘッダーの位置
+  nombre_position=bottom-left % ページ番号の位置
+}
+
+% plainスタイルをデフォルトのページスタイルに設定します
+\pagestyle{plain}
